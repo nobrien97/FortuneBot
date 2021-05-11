@@ -1,8 +1,9 @@
 import discord
 from os import system, path
 from io import StringIO
-from sys import stdout
-from random import random
+from subprocess import getoutput
+import sys
+from random import randrange
 
 client = discord.Client()
 
@@ -17,15 +18,13 @@ async def on_message(message):
 
     
     if (message.content == '!fortune'):
-        system('cowsay -l')
-        stdout = cowtypes = StringIO()
-        cowtypes = cowtypes[37:] # Remove the non-type characters
-        cowtypes = cowtypes.split()
-        typechoice = cowtypes[random(0, cowtypes.length())]
         system('clear')
-        
-        system('fortune | cowsay -f {}'.format(typechoice))
-        stdout = msg = StringIO()
+        cowTypes = getoutput('cowsay -l')[37:] #  Remove the non-type characters
+        cowTypes = cowTypes.split()
+        typechoice = cowTypes[randrange(0, len(cowTypes), 1)]
+
+        system('clear')
+        msg = getoutput('fortune | cowsay -f {}'.format(typechoice))
         await message.channel.send(msg)
         system('clear')
 
