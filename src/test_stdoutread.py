@@ -1,3 +1,5 @@
+# Test file for calculating width and length, and drawing/saving image
+
 import os
 import sys
 import io
