@@ -19,7 +19,7 @@ async def on_message(message):
         return
 
     
-    if (message.content == '!fortune'):
+    if (message.content.find('!fortune') != -1):
         # Choose a random cow type from the list of all cowsay characters
         cowTypes = getoutput('cowsay -l')[37:] #  Remove the non-animal characters
         cowTypes = cowTypes.split() # split into cowsay animals
@@ -27,12 +27,12 @@ async def on_message(message):
         # Use our choice to generate a cowsay
         msg = getoutput('fortune | cowsay -f {}'.format(typechoice))
 
-        # Image generation: calculate approximate length and width of image (12 font size = 16px)
-        msg_length = (msg.count('\n') * 16 ) + ceil(msg.count('\n') * 1/16 )
-        msg_width = len(max(msg.split('\n')) * 8)  + ceil(len(max(msg.split('\n'))) * 2)
-        msgImg = Image.new('RGB', (msg_width, msg_length), (255, 255, 255))
-        msgDraw = ImageDraw.Draw(msgImg)
+        # Image generation: calculate length and width of image and instantiate
         msgFont = ImageFont.truetype("UbuntuMono-R.ttf", 12)
+        msgDim = msgFont.getsize_multiline(msg)
+
+        msgImg = Image.new('RGB', (ceil(msgDim[0] + 0.1*msgDim[0]), ceil(msgDim[1] + 0.1*msgDim[1])), (255, 255, 255))
+        msgDraw = ImageDraw.Draw(msgImg)
         msgDraw.text((16, 0), msg, fill=(0, 0, 0, 255), font=msgFont)
         # TODO: Don't save to hard drive just to load again
         msgImg.save('/tmp/fortune.png')
