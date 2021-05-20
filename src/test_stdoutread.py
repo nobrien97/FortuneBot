@@ -20,7 +20,7 @@ typechoice = cowTypes[randrange(0, len(cowTypes), 1)]
 os.system('clear')
 msg = getoutput('fortune | cowsay -f {}'.format(typechoice))
 
-msgFont = ImageFont.truetype("UbuntuMono-R.ttf", 12)
+msgFont = ImageFont.truetype("DejaVuSansCondensed-BoldOblique.ttf", 12)
 msgDim = msgFont.getsize_multiline(msg)
 print(msgDim)
 

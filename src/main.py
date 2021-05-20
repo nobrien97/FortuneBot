@@ -39,7 +39,7 @@ async def on_message(message):
         await message.channel.send(file=discord.File('/tmp/fortune.png'))
 
 # Yeah nah not letting you lot see my ~ultra secret~ Discord Token(tm)
-tokFile = open(path.expanduser('~/Projects/Discord/DISCORD_TOKEN.tok'))
+tokFile = open(path.expanduser('./DISCORD_TOKEN.tok'))
 DISCORD_TOKEN = tokFile.read()
 tokFile.close()
 client.run(DISCORD_TOKEN)
