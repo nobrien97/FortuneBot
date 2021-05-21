@@ -1,9 +1,9 @@
 .vscode/settings.json
 
-./data/*
-./mhhh
-./mean_wordz
-./nice_wordz
-./newt_wordz
+./src/data/*
+./src/mhhh
+./src/mean_wordz
+./src/nice_wordz
+./src/newt_wordz
 
 

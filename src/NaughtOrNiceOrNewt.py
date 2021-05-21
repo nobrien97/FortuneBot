@@ -58,7 +58,6 @@ async def on_message(message):
 		cowTypes = cowTypes.split() # split into cowsay animals
 		typechoice = cowTypes[randrange(0, len(cowTypes), 1)]
 
-		# Use our choice to generate a cowsay
 		if message.content != '!fortune':
 			msg = getoutput('fortune')
 			userThreat = NaughtyOrNiceOrNewt(message.content)[0]
@@ -66,6 +65,7 @@ async def on_message(message):
 			while userThreat == NaughtyOrNiceOrNewt(msg)[0]:
 				print(msg)
 				msg = getoutput('fortune')
+			# Use our choice to generate a cowsay
 			msg = getoutput('echo {a} | cowsay -f {b}'.format(a=msg, b=typechoice))
 
 		else:
