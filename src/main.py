@@ -1,3 +1,4 @@
+# Original bot, just returns a fortune when a user enters !fortune somewhere in their Discord message
 import discord
 from os import system, path
 from io import StringIO
