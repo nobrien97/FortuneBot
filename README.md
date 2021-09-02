@@ -6,3 +6,4 @@ To use Fortune Bot, run ```main.py``` with a local token for a Discord bot with 
 ## Dependencies:
 - discord.py ```python -m pip install -U discord.py```
 - Pillow ```python -m pip install --upgrade Pillow```
+- fortune and cowsay ```sudo apt install fortune-mod cowsay```
